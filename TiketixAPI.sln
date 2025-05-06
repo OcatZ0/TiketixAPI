@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiketixAPI", "TiketixAPI\TiketixAPI.csproj", "{59D2CFE7-1CF8-4F7D-B83E-2A8DC6BEE444}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59D2CFE7-1CF8-4F7D-B83E-2A8DC6BEE444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D2CFE7-1CF8-4F7D-B83E-2A8DC6BEE444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D2CFE7-1CF8-4F7D-B83E-2A8DC6BEE444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D2CFE7-1CF8-4F7D-B83E-2A8DC6BEE444}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFA27891-7204-484C-9B77-4AB707FC24BD}
+	EndGlobalSection
+EndGlobal
