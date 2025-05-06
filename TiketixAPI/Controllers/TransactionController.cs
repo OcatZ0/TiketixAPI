@@ -21,7 +21,7 @@ namespace TiketixAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (!await _dB.Users.AnyAsync()) // validate user
+            if (!await _dB.Users.AnyAsync(q => q.Id == transactionDTO.userID)) // validate user
             {
                 return NotFound("User not found");
             }
@@ -108,6 +108,27 @@ namespace TiketixAPI.Controllers
             await _dB.SaveChangesAsync();
 
             return Created();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> FetchTransactionDetailsById(int id)
+        {
+            var selectedTransaction = await _dB.Transactions.Include(q => q.TransactionDetails).Include(q => q.Schedule.Movie).ThenInclude(q => q.MovieGenres).ThenInclude(q => q.Genre).Include(q => q.Schedule.Theater).FirstOrDefaultAsync(q => q.Id == id);
+
+            if (selectedTransaction == null)
+            {
+                return NotFound("Transaction not found");
+            }
+
+            return Ok(selectedTransaction.TransactionDetails.Select(q => new
+            {
+                title = q.Transaction.Schedule.Movie.Title,
+                genre = q.Transaction.Schedule.Movie.MovieGenres.OrderBy(a => a.Genre.Name).FirstOrDefault()?.Genre?.Name ?? "",
+                duration = q.Transaction.Schedule.Movie.Duration,
+                theater = q.Transaction.Schedule.Theater.Name,
+                schedule = q.Transaction.Schedule.Date.ToDateTime(q.Transaction.Schedule.Time).ToString("dd MMM yyyy HH:mm"),
+                seat = q.Seat
+            }));
         }
     }
 }
